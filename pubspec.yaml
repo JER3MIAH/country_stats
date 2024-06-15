@@ -1,0 +1,49 @@
+name: kanban_task_manager
+description: "A Task Management App."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.2 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+# flutter_launcher_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   image_path: "assets/pngs/app-icon.png"
+#   min_sdk_android: 21
+#   remove_alpha_ios: true
+
+# flutter_native_splash:
+#   background_image: assets/pngs/background.png
+#   android: true
+#   ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/pngs/
+    - assets/svgs/
+    - assets/json/
+
+#   fonts:
+#     - family: Axiforma
+#       fonts:
+#         - asset: assets/fonts/Kastelov-Axiforma-Bold.otf
+#         - asset: assets/fonts/Kastelov-Axiforma-Medium.otf
+#         - asset: assets/fonts/Kastelov-Axiforma-Regular.otf
+#         - asset: assets/fonts/Kastelov-Axiforma-SemiBold.otf

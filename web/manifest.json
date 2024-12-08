@@ -1,6 +1,6 @@
 {
-    "name": "kanban_task_manager",
-    "short_name": "kanban_task_manager",
+    "name": "Country Stats",
+    "short_name": "Country Stats",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

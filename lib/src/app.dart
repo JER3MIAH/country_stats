@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'features/home/presentation/screens/home_screen.dart';
+import 'features/navigation/nav.dart';
+import 'features/theme/data/bloc_providers.dart';
+import 'features/theme/data/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_task_manager/src/features/theme/logic/bloc/theme_state.dart';
-import 'features/theme/data/theme_data.dart';
+import 'features/theme/logic/bloc/theme_state.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,14 +13,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemeBloc()),
+        ...themeBlocProviders,
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (_, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Kanban Task Manager',
+            title: 'Country Stats',
             theme: state.isDarkMode ? darkTheme : lightTheme,
+            routes: {
+              AppRoutes.home: (context) => HomeScreen(),
+            },
+            initialRoute: AppRoutes.home,
           );
         },
       ),

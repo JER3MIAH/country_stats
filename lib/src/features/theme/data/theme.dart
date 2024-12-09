@@ -8,6 +8,7 @@ final lightTheme = ThemeData(
   textTheme: TextTheme().apply(fontFamily: PlusJakartaSans),
   colorScheme: ColorScheme.light(
     surface: appColors.lightModeBackground,
+    inverseSurface: appColors.white,
     onSurface: appColors.lightModeText,
     primary: appColors.white,
     onPrimary: appColors.white,
@@ -20,6 +21,7 @@ final darkTheme = ThemeData(
   textTheme: TextTheme().apply(fontFamily: PlusJakartaSans),
   colorScheme: ColorScheme.dark(
     surface: appColors.darkModeBackground,
+    inverseSurface: appColors.black,
     onSurface: appColors.white,
     primary: appColors.darkBlue,
     onPrimary: appColors.white,

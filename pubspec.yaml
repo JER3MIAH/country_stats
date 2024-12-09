@@ -44,6 +44,7 @@ flutter:
   assets:
     - assets/pngs/
     - assets/svgs/
+    - assets/json/
 
   fonts:
     - family: Plus Jakarta Sans

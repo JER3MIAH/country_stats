@@ -9,6 +9,7 @@ class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
+    final isMobile = DeviceType(context).isMobile;
     final searchController = useTextEditingController();
 
     return Scaffold(
@@ -16,11 +17,20 @@ class HomeScreen extends HookWidget {
         preferredSize: Size.fromHeight(80),
         child: CustomAppBar(),
       ),
-      body: Column(
-        children: [
-          YBox(30),
-          SearchTextfield(controller: searchController),
-        ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: isMobile ? 15 : 40)
+            .copyWith(top: 30),
+        child: Column(
+          children: [
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: [
+                SearchTextfield(controller: searchController),
+                CustomDropdown(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

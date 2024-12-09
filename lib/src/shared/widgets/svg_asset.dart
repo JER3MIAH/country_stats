@@ -28,3 +28,31 @@ class SvgAsset extends StatelessWidget {
     );
   }
 }
+
+class SvgNework extends StatelessWidget {
+  final String url;
+  final Color? color;
+  final double? height, width;
+  const SvgNework(
+    this.url, {
+    super.key,
+    this.color,
+    this.height,
+    this.width,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.network(
+      url,
+      height: height,
+      width: width,
+      colorFilter: color == null
+          ? null
+          : ColorFilter.mode(
+              color!,
+              BlendMode.srcIn,
+            ),
+    );
+  }
+}

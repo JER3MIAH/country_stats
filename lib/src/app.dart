@@ -1,3 +1,4 @@
+import 'package:country_stats/src/features/home/data/bloc_providers.dart';
 import 'package:flutter/material.dart';
 import 'features/home/presentation/screens/home_screen.dart';
 import 'features/navigation/nav.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         ...themeBlocProviders,
+        ...homeBlocProviders,
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (_, state) {

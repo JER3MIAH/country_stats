@@ -49,6 +49,31 @@ class Country {
     required this.independent,
   });
 
+  Country.empty()
+      : name = 'country',
+        topLevelDomain = [],
+        alpha2Code = '',
+        alpha3Code = '',
+        callingCodes = [],
+        capital = '',
+        altSpellings = [],
+        subregion = '',
+        region = '',
+        population = 0,
+        latlng = [],
+        demonym = '',
+        area = 0,
+        timezones = [],
+        borders = [],
+        nativeName = '',
+        numericCode = '',
+        flags = Flag(svg: '', png: ''),
+        currencies = [],
+        languages = [],
+        translations = {},
+        regionalBlocs = [],
+        independent = false;
+
   factory Country.fromJson(Map<String, dynamic> json) {
     return Country(
       name: json['name'] ?? '',
@@ -78,6 +103,58 @@ class Country {
       regionalBlocs: List<RegionalBloc>.from(
           (json['regionalBlocs'] ?? []).map((e) => RegionalBloc.fromJson(e))),
       independent: json['independent'] ?? false,
+    );
+  }
+
+  Country copyWith({
+    String? name,
+    List<String>? topLevelDomain,
+    String? alpha2Code,
+    String? alpha3Code,
+    List<String>? callingCodes,
+    String? capital,
+    List<String>? altSpellings,
+    String? subregion,
+    String? region,
+    int? population,
+    List<double>? latlng,
+    String? demonym,
+    double? area,
+    List<String>? timezones,
+    List<String>? borders,
+    String? nativeName,
+    String? numericCode,
+    Flag? flags,
+    List<Currency>? currencies,
+    List<Language>? languages,
+    Map<String, String>? translations,
+    List<RegionalBloc>? regionalBlocs,
+    bool? independent,
+  }) {
+    return Country(
+      name: name ?? this.name,
+      topLevelDomain: topLevelDomain ?? this.topLevelDomain,
+      alpha2Code: alpha2Code ?? this.alpha2Code,
+      alpha3Code: alpha3Code ?? this.alpha3Code,
+      callingCodes: callingCodes ?? this.callingCodes,
+      capital: capital ?? this.capital,
+      altSpellings: altSpellings ?? this.altSpellings,
+      subregion: subregion ?? this.subregion,
+      region: region ?? this.region,
+      population: population ?? this.population,
+      latlng: latlng ?? this.latlng,
+      demonym: demonym ?? this.demonym,
+      area: area ?? this.area,
+      timezones: timezones ?? this.timezones,
+      borders: borders ?? this.borders,
+      nativeName: nativeName ?? this.nativeName,
+      numericCode: numericCode ?? this.numericCode,
+      flags: flags ?? this.flags,
+      currencies: currencies ?? this.currencies,
+      languages: languages ?? this.languages,
+      translations: translations ?? this.translations,
+      regionalBlocs: regionalBlocs ?? this.regionalBlocs,
+      independent: independent ?? this.independent,
     );
   }
 }

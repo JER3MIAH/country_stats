@@ -20,7 +20,7 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     try {
       String jsonString = await rootBundle.loadString('assets/json/data.json');
       final jsonData =
-          jsonDecode(jsonString) as List; // Decode as List<dynamic>
+          jsonDecode(jsonString) as List;
       final countries = jsonData
           .map((c) => Country.fromJson(c as Map<String, dynamic>))
           .toList();

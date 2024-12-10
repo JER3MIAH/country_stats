@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:country_stats/src/features/home/data/models/country.dart';
+import 'package:country_stats/src/shared/shared.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'country_state.dart';
@@ -38,13 +39,17 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
     final filteredCountries = state.countries
         .where(
           (country) =>
-              country.name
-                  .toLowerCase()
-                  .contains(state.searchQuery.toLowerCase()) &&
-              country.region.toLowerCase() ==
-                  state.selectedRegion.toLowerCase(),
+              (state.searchQuery.isEmpty
+                  ? true
+                  : country.name
+                      .toLowerCase()
+                      .contains(state.searchQuery.toLowerCase())) &&
+              (event.region == ALL_REGIONS
+                  ? true
+                  : country.region.toLowerCase() == event.region.toLowerCase()),
         )
         .toList();
+
     emit(state.copyWith(
       selectedRegion: event.region,
       filteredCountries: filteredCountries,
@@ -83,8 +88,10 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
         .where(
           (country) =>
               country.name.toLowerCase().contains(event.query.toLowerCase()) &&
-              country.region.toLowerCase() ==
-                  state.selectedRegion.toLowerCase(),
+              (state.selectedRegion == ALL_REGIONS
+                  ? true
+                  : country.region.toLowerCase() ==
+                      state.selectedRegion.toLowerCase()),
         )
         .toList();
     emit(state.copyWith(

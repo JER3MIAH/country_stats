@@ -45,28 +45,47 @@ class HomeScreen extends HookWidget {
                         ],
                       ),
                       YBox(20),
-                      Expanded(
-                        child: GridView.builder(
-                          itemCount: state.filteredCountries.length,
-                          gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 264,
-                            mainAxisExtent: 336,
-                            childAspectRatio: 264 / 336,
-                            mainAxisSpacing: 40,
-                            crossAxisSpacing: 40,
-                          ),
-                          itemBuilder: (_, index) {
-                            final country = state.filteredCountries[index];
-                            return CountryBox(
-                              country: country,
-                              onTap: () => context.read<CountryBloc>().add(
-                                    SelectCountry(countryName: country.name),
+                      if (state.filteredCountries.isEmpty)
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 40),
+                                  child: AppText(
+                                    'No Match Found',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
                                   ),
-                            );
-                          },
-                        ),
-                      )
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      else
+                        Expanded(
+                          child: GridView.builder(
+                            itemCount: state.filteredCountries.length,
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 264,
+                              mainAxisExtent: 336,
+                              childAspectRatio: 264 / 336,
+                              mainAxisSpacing: 40,
+                              crossAxisSpacing: 40,
+                            ),
+                            itemBuilder: (_, index) {
+                              final country = state.filteredCountries[index];
+                              return CountryBox(
+                                country: country,
+                                onTap: () => context.read<CountryBloc>().add(
+                                      SelectCountry(countryName: country.name),
+                                    ),
+                              );
+                            },
+                          ),
+                        )
                     ],
                   ),
           ),

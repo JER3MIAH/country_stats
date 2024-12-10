@@ -27,6 +27,7 @@ class HomeScreen extends HookWidget {
             child: state.selectedCountry != null
                 ? CountryDetailView()
                 : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Wrap(
                         alignment: WrapAlignment.spaceBetween,

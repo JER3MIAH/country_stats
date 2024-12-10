@@ -73,7 +73,10 @@ class CountryBloc extends Bloc<CountryEvent, CountryState> {
 
   void _resetSelectedCountry(
       ResetSelectedCountry event, Emitter<CountryState> emit) {
-    emit(state.copyWith(selectedCountry: null));
+    emit(state.copyWith(
+      selectedCountry: null,
+      overrideSelectedCountry: true,
+    ));
   }
 
   void _inputSearchQuery(InputSearchQuery event, Emitter<CountryState> emit) {

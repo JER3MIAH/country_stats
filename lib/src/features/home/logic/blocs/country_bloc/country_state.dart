@@ -34,9 +34,11 @@ class CountryState extends Equatable {
     String? searchQuery,
     List<Country>? countries,
     List<Country>? filteredCountries,
+    bool overrideSelectedCountry = true,
   }) {
     return CountryState(
-      selectedCountry: selectedCountry ?? this.selectedCountry,
+      selectedCountry:
+          overrideSelectedCountry ? selectedCountry : this.selectedCountry,
       selectedRegion: selectedRegion ?? this.selectedRegion,
       searchQuery: searchQuery ?? this.searchQuery,
       countries: countries ?? this.countries,

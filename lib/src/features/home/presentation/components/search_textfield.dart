@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class SearchTextfield extends StatelessWidget {
   final TextEditingController controller;
+  final void Function(String)? onChanged;
   const SearchTextfield({
     super.key,
     required this.controller,
+     this.onChanged,
   });
 
   @override
@@ -34,6 +36,7 @@ class SearchTextfield extends StatelessWidget {
         cursorColor: theme.primary,
         style: tStyle,
         keyboardType: TextInputType.text,
+        onChanged:onChanged ,
         decoration: InputDecoration(
           filled: true,
           fillColor: theme.primary,

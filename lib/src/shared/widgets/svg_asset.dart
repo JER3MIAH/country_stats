@@ -47,6 +47,7 @@ class SvgNework extends StatelessWidget {
       url,
       height: height,
       width: width,
+      fit: BoxFit.cover,
       colorFilter: color == null
           ? null
           : ColorFilter.mode(
